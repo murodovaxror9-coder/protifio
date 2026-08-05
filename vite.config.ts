@@ -1,7 +1,6 @@
 import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import type { Plugin } from "vite";
-import { datalist } from "framer-motion/client" ;
 
 function telegramDevApi(env: Record<string, string>): Plugin {
   return {
@@ -60,7 +59,8 @@ function telegramDevApi(env: Record<string, string>): Plugin {
               body: JSON.stringify({ chat_id: chatId, text, parse_mode: "MarkdownV2" }),
             });
 
-            const data = await tgRes.json();
+            // xatolikni oldini olish uchun (data as any) qilindi
+            const data = (await tgRes.json()) as any;
 
             if (!data.ok) {
               console.error("Telegram API xatosi:", data);
