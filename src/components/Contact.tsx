@@ -5,6 +5,7 @@ import { GithubIcon } from "./ui/BrandIcons";
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { useUIStore } from "../store/useStore";
+import { useT } from "../i18n/useT";
 
 const contactLinks = [
   { icon: Mail, label: "axror6495@gmail.com", href: "mailto:axror6495@gmail.com" },
@@ -14,13 +15,7 @@ const contactLinks = [
 
 const initialForm = { name: "", email: "", phone: "", subject: "", message: "" };
 
-function Field({
-  label,
-  children,
-}: {
-  label: string;
-  children: React.ReactNode;
-}) {
+function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
       <label className="mb-2 block font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
@@ -35,6 +30,7 @@ const inputClass =
   "w-full rounded-xl border border-line bg-surface2 px-4 py-3.5 text-sm text-ink placeholder:text-muted/70 transition-colors focus:border-cyan focus:outline-none";
 
 export default function Contact() {
+  const { t } = useT();
   const submitted = useUIStore((s) => s.contactSubmitted);
   const setSubmitted = useUIStore((s) => s.setContactSubmitted);
   const [form, setForm] = useState(initialForm);
@@ -64,12 +60,7 @@ export default function Contact() {
   };
 
   return (
-    <Section
-      id="contact"
-      eyebrow="Aloqa"
-      title="Loyihangizni muhokama qilaylik"
-      description="Savolingiz bormi yoki loyiha boshlashni xohlaysizmi? Quyidagi forma yoki to'g'ridan-to'g'ri kanallar orqali yozing."
-    >
+    <Section id="contact" eyebrow={t.contact.eyebrow} title={t.contact.title} description={t.contact.description}>
       <div className="grid gap-8 md:grid-cols-[0.8fr_1.2fr]">
         <Reveal>
           <div className="space-y-4">
@@ -101,27 +92,25 @@ export default function Contact() {
                 className="relative flex flex-col items-center justify-center gap-3 py-16 text-center"
               >
                 <CheckCircle2 size={40} className="text-cyan" />
-                <p className="text-ink">Xabaringiz uchun rahmat!</p>
-                <p className="text-sm text-muted">Tez orada siz bilan bog'lanaman.</p>
+                <p className="text-ink">{t.contact.success}</p>
+                <p className="text-sm text-muted">{t.contact.successSub}</p>
                 <button
                   type="button"
                   onClick={() => setSubmitted(false)}
                   className="btn-ghost mt-2 !py-2 !px-4 text-xs"
                 >
-                  Yana xabar yuborish
+                  {t.contact.resend}
                 </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit} className="relative space-y-6">
                 <div>
-                  <h3 className="section-title text-2xl">Xabar yuboring</h3>
-                  <p className="mt-2 text-sm text-muted">
-                    Formani to'ldiring — 24 soat ichida javob beraman.
-                  </p>
+                  <h3 className="section-title text-2xl">{t.contact.formTitle}</h3>
+                  <p className="mt-2 text-sm text-muted">{t.contact.formSubtitle}</p>
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Ismingiz">
+                  <Field label={t.contact.name}>
                     <input
                       required
                       placeholder="Akmal Murodov"
@@ -130,7 +119,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                   </Field>
-                  <Field label="Email">
+                  <Field label={t.contact.email}>
                     <input
                       required
                       type="email"
@@ -143,7 +132,7 @@ export default function Contact() {
                 </div>
 
                 <div className="grid gap-5 sm:grid-cols-2">
-                  <Field label="Raqam">
+                  <Field label={t.contact.phone}>
                     <input
                       type="tel"
                       inputMode="tel"
@@ -153,7 +142,7 @@ export default function Contact() {
                       className={inputClass}
                     />
                   </Field>
-                  <Field label="Mavzu">
+                  <Field label={t.contact.subject}>
                     <input
                       required
                       placeholder="Loyiha, taklif, hamkorlik..."
@@ -164,7 +153,7 @@ export default function Contact() {
                   </Field>
                 </div>
 
-                <Field label="Xabar">
+                <Field label={t.contact.message}>
                   <textarea
                     required
                     rows={6}
@@ -181,19 +170,16 @@ export default function Contact() {
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan to-cyan-soft py-4 text-sm font-semibold text-base shadow-glow-cyan transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:hover:scale-100"
                 >
                   {status === "loading" ? (
-                    "Yuborilmoqda..."
+                    t.contact.sending
                   ) : (
                     <>
-                      <Send size={16} /> Yuborish
+                      <Send size={16} /> {t.contact.submit}
                     </>
                   )}
                 </button>
 
                 {status === "error" && (
-                  <p className="text-center text-sm text-red-400">
-                    Xabar yuborilmadi. Birozdan so'ng qayta urinib ko'ring yoki to'g'ridan-to'g'ri
-                    Telegram orqali yozing.
-                  </p>
+                  <p className="text-center text-sm text-red-400">{t.contact.error}</p>
                 )}
               </form>
             )}

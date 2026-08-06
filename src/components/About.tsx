@@ -1,45 +1,44 @@
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { Code2, Rocket, Users } from "lucide-react";
-
-const points = [
-  {
-    icon: Code2,
-    title: "Toza kod",
-    text: "Component-based arxitektura va qayta ishlatiladigan kod bilan ishlayman.",
-  },
-  {
-    icon: Rocket,
-    title: "Tez natija",
-    text: "AI vositalaridan unumli foydalanib, loyihalarni qisqa muddatda topshiraman.",
-  },
-  {
-    icon: Users,
-    title: "Mijoz bilan aloqa",
-    text: "Har bir bosqichda tushunarli va ochiq muloqotni muhim deb bilaman.",
-  },
-];
+import { useT } from "../i18n/useT";
 
 export default function About() {
+  const { t, lang } = useT();
+
+  const points = [
+    {
+      icon: Code2,
+      title: lang === "uz" ? "Toza kod" : "Clean code",
+      text:
+        lang === "uz"
+          ? "Component-based arxitektura va qayta ishlatiladigan kod bilan ishlayman."
+          : "I work with a component-based architecture and reusable code.",
+    },
+    {
+      icon: Rocket,
+      title: lang === "uz" ? "Tez natija" : "Fast results",
+      text:
+        lang === "uz"
+          ? "AI vositalaridan unumli foydalanib, loyihalarni qisqa muddatda topshiraman."
+          : "By using AI tools efficiently, I deliver projects in a short timeframe.",
+    },
+    {
+      icon: Users,
+      title: lang === "uz" ? "Mijoz bilan aloqa" : "Client communication",
+      text:
+        lang === "uz"
+          ? "Har bir bosqichda tushunarli va ochiq muloqotni muhim deb bilaman."
+          : "I value clear, open communication at every stage of the project.",
+    },
+  ];
+
   return (
-    <Section
-      id="about"
-      eyebrow="Men haqimda"
-      title="Frontend developer, kim g'oyalarni interfeysga aylantiradi"
-    >
+    <Section id="about" eyebrow={t.about.eyebrow} title={t.about.title}>
       <div className="grid gap-12 md:grid-cols-[1fr_1fr] md:items-start">
         <Reveal>
-          <p className="text-muted leading-relaxed">
-            Men Toshkentda yashovchi frontend developerman. React ekotizimi va
-            zamonaviy AI vositalari (Claude, ChatGPT, Copilot) yordamida
-            mijozlar uchun tez, ishonchli va chiroyli interfeyslar yarataman.
-          </p>
-          <p className="mt-4 text-muted leading-relaxed">
-            Oddiy landing page'dan tortib to murakkab dashboard'largacha —
-            har bir loyihaga puxta o'ylangan dizayn va toza kod bilan
-            yondashaman. Maqsadim — mijozning biznesiga real qiymat
-            qo'shadigan mahsulot yaratish.
-          </p>
+          <p className="text-muted leading-relaxed">{t.about.p1}</p>
+          <p className="mt-4 text-muted leading-relaxed">{t.about.p2}</p>
         </Reveal>
 
         <div className="grid gap-4">

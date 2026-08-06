@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-base: 10 11 16;
+  --color-surface: 18 20 28;
+  --color-surface2: 26 29 40;
+  --color-line: 35 38 54;
+  --color-ink: 245 246 250;
+  --color-muted: 139 144 163;
+}
+
+html.light {
+  --color-base: 247 247 251;
+  --color-surface: 255 255 255;
+  --color-surface2: 238 240 246;
+  --color-line: 223 226 236;
+  --color-ink: 18 20 28;
+  --color-muted: 91 95 115;
+}
+
 @layer base {
   * {
     scroll-behavior: smooth;
   }
   body {
-    @apply bg-base text-ink font-body antialiased;
+    @apply bg-base text-ink font-body antialiased transition-colors duration-300;
   }
   h1, h2, h3, h4 {
     @apply font-display;
@@ -18,6 +36,12 @@
   :focus-visible {
     outline: 2px solid #22E6C5;
     outline-offset: 3px;
+  }
+  @media (hover: hover) and (pointer: fine) {
+    html.custom-cursor,
+    html.custom-cursor * {
+      cursor: none;
+    }
   }
 }
 

@@ -4,10 +4,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        base: "#0A0B10",
-        surface: "#12141C",
-        surface2: "#1A1D28",
-        line: "#232636",
+        base: "rgb(var(--color-base) / <alpha-value>)",
+        surface: "rgb(var(--color-surface) / <alpha-value>)",
+        surface2: "rgb(var(--color-surface2) / <alpha-value>)",
+        line: "rgb(var(--color-line) / <alpha-value>)",
         violet: {
           DEFAULT: "#7C6FFF",
           soft: "#a49bff",
@@ -19,8 +19,8 @@ export default {
         amber: {
           DEFAULT: "#FFB454",
         },
-        ink: "#F5F6FA",
-        muted: "#8B90A3",
+        ink: "rgb(var(--color-ink) / <alpha-value>)",
+        muted: "rgb(var(--color-muted) / <alpha-value>)",
       },
       fontFamily: {
         display: ["'Space Grotesk'", "sans-serif"],
@@ -29,7 +29,7 @@ export default {
       },
       backgroundImage: {
         "grid-fade":
-          "linear-gradient(to bottom, transparent, #0A0B10 85%), linear-gradient(90deg, rgba(124,111,255,.10) 1px, transparent 1px), linear-gradient(rgba(124,111,255,.10) 1px, transparent 1px)",
+          "linear-gradient(to bottom, transparent, rgb(var(--color-base)) 85%), linear-gradient(90deg, rgba(124,111,255,.10) 1px, transparent 1px), linear-gradient(rgba(124,111,255,.10) 1px, transparent 1px)",
         "hero-mesh":
           "radial-gradient(circle at 15% 20%, rgba(124,111,255,.35), transparent 40%), radial-gradient(circle at 85% 15%, rgba(34,230,197,.25), transparent 40%), radial-gradient(circle at 50% 90%, rgba(255,180,84,.12), transparent 45%)",
       },

@@ -2,10 +2,12 @@ import { motion } from "framer-motion";
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { skills } from "../data/skills";
+import { useT } from "../i18n/useT";
 
 export default function Skills() {
+  const { t } = useT();
   return (
-    <Section id="skills" eyebrow="Ko'nikmalar" title="Texnologiyalar bilan ishlash darajam">
+    <Section id="skills" eyebrow={t.skills.eyebrow} title={t.skills.title}>
       <div className="grid gap-x-10 gap-y-6 md:grid-cols-2">
         {skills.map((s, i) => (
           <Reveal key={s.name} delay={(i % 6) * 0.05}>

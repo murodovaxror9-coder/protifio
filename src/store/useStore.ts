@@ -1,4 +1,6 @@
 import { create } from "zustand";
+import { persist } from "zustand/middleware";
+import type { Lang } from "../i18n/translations";
 
 interface UIState {
   activeTestimonial: number;
@@ -16,3 +18,23 @@ export const useUIStore = create<UIState>((set) => ({
   contactSubmitted: false,
   setContactSubmitted: (v) => set({ contactSubmitted: v }),
 }));
+
+interface PreferencesState {
+  lang: Lang;
+  toggleLang: () => void;
+  theme: "dark" | "light";
+  toggleTheme: () => void;
+}
+
+export const usePreferencesStore = create<PreferencesState>()(
+  persist(
+    (set) => ({
+      lang: "uz",
+      toggleLang: () => set((state) => ({ lang: state.lang === "uz" ? "en" : "uz" })),
+      theme: "dark",
+      toggleTheme: () =>
+        set((state) => ({ theme: state.theme === "dark" ? "light" : "dark" })),
+    }),
+    { name: "portfolio-preferences" }
+  )
+);

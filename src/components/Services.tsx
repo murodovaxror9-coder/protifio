@@ -1,18 +1,20 @@
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { services } from "../data/services";
+import { useT } from "../i18n/useT";
 import { Bot, Briefcase, Layout, Check, ArrowUpRight } from "lucide-react";
 import { FigmaIcon } from "./ui/BrandIcons";
 
 const icons = { layout: Layout, briefcase: Briefcase, figma: FigmaIcon, bot: Bot };
 
 export default function Services() {
+  const { t, lang } = useT();
   return (
     <Section
       id="services"
-      eyebrow="Xizmatlar"
-      title="Loyihangiz uchun qanday yordam bera olaman"
-      description="Byudjet va vazifangizga qarab mos xizmatni tanlang, tafsilotlarni birga muhokama qilamiz."
+      eyebrow={t.services.eyebrow}
+      title={t.services.title}
+      description={t.services.description}
     >
       <div className="grid gap-6 sm:grid-cols-2">
         {services.map((s, i) => {
@@ -26,10 +28,10 @@ export default function Services() {
                   </div>
                   <span className="font-mono text-sm text-amber">{s.price}</span>
                 </div>
-                <h3 className="text-lg font-medium text-ink">{s.title}</h3>
-                <p className="mt-2 text-sm text-muted">{s.description}</p>
+                <h3 className="text-lg font-medium text-ink">{lang === "uz" ? s.title : s.titleEn}</h3>
+                <p className="mt-2 text-sm text-muted">{lang === "uz" ? s.description : s.descriptionEn}</p>
                 <ul className="mt-4 space-y-2">
-                  {s.features.map((f) => (
+                  {(lang === "uz" ? s.features : s.featuresEn).map((f) => (
                     <li key={f} className="flex items-center gap-2 text-sm text-muted">
                       <Check size={14} className="text-cyan" /> {f}
                     </li>
@@ -39,7 +41,7 @@ export default function Services() {
                   href="#contact"
                   className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-cyan transition-transform group-hover:translate-x-1"
                 >
-                  Buyurtma berish <ArrowUpRight size={15} />
+                  {t.services.order} <ArrowUpRight size={15} />
                 </a>
               </div>
             </Reveal>
