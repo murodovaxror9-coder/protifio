@@ -5,8 +5,6 @@ import Section from "./ui/Section";
 import { useGithub } from "../hooks/useGithub";
 import { useT } from "../i18n/useT";
 
-const GITHUB_USERNAME = "murodovaxror9-coder";
-
 const LANGUAGE_COLORS: Record<string, string> = {
   JavaScript: "#f1e05a",
   TypeScript: "#3178c6",
@@ -17,7 +15,7 @@ const LANGUAGE_COLORS: Record<string, string> = {
 
 export default function GithubProjects() {
   const { t } = useT();
-  const { user, repos, loading, error } = useGithub(GITHUB_USERNAME);
+  const { user, repos, loading, error } = useGithub();
 
   return (
     <Section id="github" eyebrow={t.github.eyebrow} title={t.github.title} description={t.github.description}>

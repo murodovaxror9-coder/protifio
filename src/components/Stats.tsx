@@ -16,11 +16,10 @@ import { useGithub } from "../hooks/useGithub";
 import { useT } from "../i18n/useT";
 
 const PIE_COLORS = ["#7C6FFF", "#22E6C5", "#FFB454", "#4B4F63"];
-const GITHUB_USERNAME = "murodovaxror9-coder";
 
 export default function Stats() {
   const { t } = useT();
-  const { user } = useGithub(GITHUB_USERNAME);
+  const { user } = useGithub();
 
   const cards = [
     ...overviewStats,
