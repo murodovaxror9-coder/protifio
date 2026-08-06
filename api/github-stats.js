@@ -10,10 +10,10 @@ export default async function handler(req, res) {
   res.setHeader("Cache-Control", "public, s-maxage=600, stale-while-revalidate=3600");
 
   const headers = {
-    Accept: "application/vnd.github+json",
-    "User-Agent": "murodov-portfolio",
-    ...(process.env.GITHUB_TOKEN ? { Authorization: `Bearer ${process.env.GITHUB_TOKEN}` } : {}),
-  };
+  Accept: "application/vnd.github+json",
+  "User-Agent": "murodov-portfolio",
+  ...(process.env.GITHUB_TOKEN ? { Authorization: `token ${process.env.GITHUB_TOKEN}` } : {}),
+};
 
   try {
     const [userRes, reposRes] = await Promise.all([
@@ -49,3 +49,5 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: "GitHub ma'lumotlarini yuklab bo'lmadi" });
   }
 }
+
+
