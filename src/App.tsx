@@ -7,6 +7,7 @@ import About from "./components/About";
 import Skills from "./components/Skills";
 import CustomCursor from "./components/ui/CustomCursor";
 import ScrollProgress from "./components/ui/ScrollProgress";
+import BackToTop from "./components/ui/BackToTop";
 import Footer from "./components/Footer";
 import { usePreferencesStore } from "./store/useStore";
 
@@ -14,6 +15,8 @@ import { usePreferencesStore } from "./store/useStore";
 const Services = lazy(() => import("./components/Services"));
 const Projects = lazy(() => import("./components/Projects"));
 const GithubProjects = lazy(() => import("./components/GithubProjects"));
+const Certificates = lazy(() => import("./components/Certificates"));
+const Blog = lazy(() => import("./components/Blog"));
 const Testimonials = lazy(() => import("./components/Testimonials"));
 const AITools = lazy(() => import("./components/AITools"));
 const Stats = lazy(() => import("./components/Stats"));
@@ -50,6 +53,8 @@ export default function App() {
           <Services />
           <Projects />
           <GithubProjects />
+          <Certificates />
+          <Blog />
           <Testimonials />
           <AITools />
           <Stats />
@@ -57,6 +62,7 @@ export default function App() {
         </Suspense>
       </main>
       <Footer />
+      <BackToTop />
     </>
   );
 }

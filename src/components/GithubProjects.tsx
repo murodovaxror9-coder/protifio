@@ -1,9 +1,12 @@
-import { Star, Loader2, TriangleAlert } from "lucide-react";
-import { GithubIcon } from "./ui/BrandIcons";
+import { Star, Loader2, TriangleAlert, ArrowUpRight } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./ui/BrandIcons";
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { useGithub } from "../hooks/useGithub";
 import { useT } from "../i18n/useT";
+
+// TODO: replace with your real LinkedIn profile URL
+const LINKEDIN_URL = "https://www.linkedin.com/in/axror-murodov";
 
 const LANGUAGE_COLORS: Record<string, string> = {
   JavaScript: "#f1e05a",
@@ -29,6 +32,19 @@ export default function GithubProjects() {
             <p className="text-xl font-semibold text-ink">{user.followers}</p>
             <p className="text-xs text-muted">{t.github.followers}</p>
           </div>
+          <a
+            href={LINKEDIN_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="card flex items-center gap-3 px-5 py-3 transition-colors hover:border-cyan/50"
+          >
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#0A66C2]/15 text-[#0A66C2]">
+              <LinkedinIcon size={16} />
+            </span>
+            <span className="flex items-center gap-1 text-sm font-medium text-ink">
+              {t.github.linkedin} <ArrowUpRight size={14} className="text-muted" />
+            </span>
+          </a>
         </div>
       )}
 

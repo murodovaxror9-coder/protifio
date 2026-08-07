@@ -20,6 +20,8 @@ export default function Navbar() {
     { href: "#services", label: t.nav.services },
     { href: "#projects", label: t.nav.projects },
     { href: "#github", label: t.nav.github },
+    { href: "#certificates", label: t.nav.certificates },
+    { href: "#blog", label: t.nav.blog },
     { href: "#stats", label: t.nav.stats },
     { href: "#contact", label: t.nav.contact },
   ];

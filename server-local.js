@@ -47,7 +47,15 @@ const server = http.createServer(async (req, res) => {
     let body = '';
     for await (const chunk of req) body += chunk;
     try {
-      const json = JSON.parse(body || '{}');
+      let json;
+      try {
+        json = JSON.parse(body || '{}');
+      } catch (parseErr) {
+        console.error('Invalid JSON body received:', body);
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ ok: false, error: "Noto'g'ri JSON body" }));
+        return;
+      }
       const { name, email, phone, subject, message } = json ?? {};
       if (!name || !email || !subject || !message) {
         res.writeHead(400, { 'Content-Type': 'application/json' });

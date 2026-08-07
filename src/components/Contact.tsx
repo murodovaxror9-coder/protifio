@@ -1,16 +1,20 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Send, CheckCircle2 } from "lucide-react";
-import { GithubIcon } from "./ui/BrandIcons";
+import { Mail, Send, CheckCircle2, Loader2 } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "./ui/BrandIcons";
 import Reveal from "./ui/Reveal";
 import Section from "./ui/Section";
 import { useUIStore } from "../store/useStore";
 import { useT } from "../i18n/useT";
 
+// TODO: replace with your real LinkedIn profile URL
+const LINKEDIN_URL = "https://www.linkedin.com/in/axror-murodov";
+
 const contactLinks = [
   { icon: Mail, label: "axror6495@gmail.com", href: "mailto:axror6495@gmail.com" },
   { icon: Send, label: "@Murodov_777", href: "https://t.me/Murodov_777" },
   { icon: GithubIcon, label: "murodovaxror9-coder", href: "https://github.com/murodovaxror9-coder" },
+  { icon: LinkedinIcon, label: "LinkedIn", href: LINKEDIN_URL },
 ];
 
 const initialForm = { name: "", email: "", phone: "", subject: "", message: "" };
@@ -170,7 +174,9 @@ export default function Contact() {
                   className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan to-cyan-soft py-4 text-sm font-semibold text-base shadow-glow-cyan transition-transform duration-200 hover:scale-[1.01] active:scale-[0.99] disabled:opacity-60 disabled:hover:scale-100"
                 >
                   {status === "loading" ? (
-                    t.contact.sending
+                    <>
+                      <Loader2 size={16} className="animate-spin" /> {t.contact.sending}
+                    </>
                   ) : (
                     <>
                       <Send size={16} /> {t.contact.submit}

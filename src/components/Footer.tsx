@@ -1,5 +1,8 @@
 import { Mail, Send } from "lucide-react";
-import { GithubIcon } from "./ui/BrandIcons";
+import { GithubIcon, LinkedinIcon } from "./ui/BrandIcons";
+
+// TODO: replace with your real LinkedIn profile URL
+const LINKEDIN_URL = "https://www.linkedin.com/in/axror-murodov";
 
 export default function Footer() {
   return (
@@ -15,6 +18,9 @@ export default function Footer() {
         <div className="flex items-center gap-3">
           <a href="https://github.com/murodovaxror9-coder" target="_blank" rel="noreferrer" className="text-muted hover:text-ink">
             <GithubIcon size={18} />
+          </a>
+          <a href={LINKEDIN_URL} target="_blank" rel="noreferrer" className="text-muted hover:text-ink">
+            <LinkedinIcon size={18} />
           </a>
           <a href="mailto:axror6495@gmail.com" className="text-muted hover:text-ink">
             <Mail size={18} />

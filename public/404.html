@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>404 — Sahifa topilmadi | Axror Murodov</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --base: #0a0b10;
+        --ink: #f4f5f9;
+        --muted: #8b90a3;
+        --violet: #8b5cf6;
+        --cyan: #22d3ee;
+        --line: rgba(255, 255, 255, 0.08);
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        height: 100%;
+        margin: 0;
+        background: var(--base);
+        color: var(--ink);
+        font-family: "Inter", system-ui, sans-serif;
+      }
+      body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+        position: relative;
+        overflow: hidden;
+      }
+      .blob {
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0.25;
+        pointer-events: none;
+      }
+      .blob.one { background: var(--violet); top: -80px; left: -80px; }
+      .blob.two { background: var(--cyan); bottom: -100px; right: -60px; }
+      .wrap {
+        position: relative;
+        text-align: center;
+        max-width: 480px;
+      }
+      .code {
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: clamp(72px, 18vw, 128px);
+        line-height: 1;
+        margin: 0;
+        background: linear-gradient(90deg, var(--violet), var(--cyan));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      h1 {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 22px;
+        margin: 16px 0 8px;
+      }
+      p {
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.6;
+        margin: 0 0 28px;
+      }
+      a.btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 999px;
+        background: linear-gradient(90deg, var(--violet), var(--cyan));
+        color: #0a0b10;
+        font-weight: 600;
+        font-size: 14px;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="blob one"></div>
+    <div class="blob two"></div>
+    <div class="wrap">
+      <p class="code">404</p>
+      <h1>Sahifa topilmadi</h1>
+      <p>Siz izlayotgan sahifa mavjud emas yoki ko'chirilgan. Bosh sahifaga qaytib, u yerdan davom eting.</p>
+      <a class="btn" href="/">← Bosh sahifaga qaytish</a>
+    </div>
+  </body>
+</html>
